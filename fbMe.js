@@ -1,19 +1,20 @@
 import FB from 'fb'
+const key = require('./key.json')
 
 FB.options({ version: 'v2.6' })
 
 export function getLoginUrl() {
   return FB.getLoginUrl({
-    client_id: '571061656405576',
-    scope: 'email,user_likes',
+    client_id: key.client_id,
+    scope: key.scope,
     redirect_uri: 'http://localhost:8080/',
   })
 }
 
 export function getToken(code) {
   FB.api('oauth/access_token', {
-    client_id: '571061656405576',
-    client_secret: '',
+    client_id: key.client_id,
+    client_secret: key.client_secret,
     redirect_uri: 'http://localhost:8080/',
     code,
   }, (res) => {

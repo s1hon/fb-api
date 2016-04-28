@@ -1,5 +1,13 @@
 import FB from 'fb'
-const key = require('./key.json')
+try {
+  const key = require('./key.json')
+}
+catch(e) {
+  throw(`
+  Error: You should create the key.json file.
+  More Info: https://github.com/opjlmi/fb-api#create-a-keyjson-file`)
+}
+
 
 FB.options({ version: 'v2.6' })
 
